@@ -1,9 +1,11 @@
 package com.mango.comments.Database;
 
 import com.mango.comments.Model.Comment;
+import com.mango.comments.Model.CommentList;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -34,6 +36,18 @@ public class FakeCommentDatabase implements CommentData {
       return  DB.stream().filter(Comment->Comment.getId().equals(id))
                 .findFirst();
     }
+
+    @Override
+    public CommentList selectCommentsByUserID(UUID uid) {
+        CommentList comments = new CommentList();
+        DB.stream().filter(c -> c.getUserID().equals(uid)).forEach(
+                c -> comments.add(c)
+        );
+
+        return comments;
+
+    }
+
 
     @Override
     public int deleteComment(UUID id) {

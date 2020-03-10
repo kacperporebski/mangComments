@@ -5,16 +5,16 @@ import java.util.UUID;
 
 public class Comment {
 
-   private final UUID id;
+   private final UUID commentID;
    private UUID postID;
    private UUID userID;
    private String comment;
 
-   public Comment(@JsonProperty("id") UUID id,
-                 @JsonProperty("pid") UUID postID,
-                 @JsonProperty("uid") UUID userID,
-                 @JsonProperty("data") String c){
-       this.id=id;
+   public Comment(@JsonProperty("commentID") UUID id,
+                 @JsonProperty("postID") UUID postID,
+                 @JsonProperty("userID") UUID userID,
+                 @JsonProperty("comment") String c){
+       commentID=id;
        this.postID=postID;
        this.userID=userID;
        comment=c;
@@ -25,7 +25,7 @@ public class Comment {
     }
 
     public UUID getId() {
-        return id;
+        return commentID;
     }
 
     public UUID getPostID() {

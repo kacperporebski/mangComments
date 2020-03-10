@@ -1,6 +1,7 @@
 package com.mango.comments.Database;
 
 import com.mango.comments.Model.Comment;
+import com.mango.comments.Model.CommentList;
 
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public interface CommentData {
 
     ArrayList<Comment> selectAllComments();
     Optional<Comment> selectCommentByID(UUID id);
+    CommentList selectCommentsByUserID(UUID uid);
     int deleteComment(UUID id);
     int updateComment(UUID id, Comment newCom);
 

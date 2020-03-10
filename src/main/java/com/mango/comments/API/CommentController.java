@@ -2,6 +2,7 @@ package com.mango.comments.API;
 
 
 import com.mango.comments.Model.Comment;
+import com.mango.comments.Model.CommentList;
 import com.mango.comments.Service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +30,16 @@ public class CommentController {
         return commentService.getAllComments();
     }
 
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "commentID/{id}")
     public Comment selectCommentByID(@PathVariable("id")UUID id ){
         return commentService.selectCommentByID(id)
                 .orElse(null);
         //return null if not found
+    }
+
+    @GetMapping(path = {"user/{uid}"})
+    public CommentList selectCommentsByUserID(@PathVariable("uid")UUID uid ){
+        return commentService.selectCommentsByUserID(uid);
     }
 
     @DeleteMapping(path = "{id}")

@@ -2,6 +2,7 @@ package com.mango.comments.Service;
 
 import com.mango.comments.Database.CommentData;
 import com.mango.comments.Model.Comment;
+import com.mango.comments.Model.CommentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,10 @@ public class CommentService {
 
     public Optional<Comment> selectCommentByID(UUID id){
         return commentDatabase.selectCommentByID(id);
+    }
+
+    public CommentList selectCommentsByUserID(UUID id){
+        return commentDatabase.selectCommentsByUserID(id);
     }
 
     public int deleteComment(UUID id){
