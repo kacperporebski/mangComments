@@ -176,10 +176,11 @@ public class CommentTable extends SQLDatabase implements CommentData
     {
         try
         {
-            String query = "UPDATE Comments SET CommentContent = ? WHERE IDNum = ?";
+            String query = "UPDATE Comments SET CommentContent = ?, Likes = ? WHERE IDNum = ?";
             PreparedStatement pState = connection.prepareStatement(query);
             pState.setString(1, newCom.getMessage());
-            pState.setString(2, id.toString());
+            pState.setInt(2, newCom.getLikes());
+            pState.setString(3, id.toString());
             pState.execute();
             return true;
         } catch (SQLException e)
