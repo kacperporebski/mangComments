@@ -91,8 +91,10 @@ public class CommentTable extends SQLDatabase implements CommentData
                 UUID userID = UUID.fromString(resultSet.getString("UserID"));
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
+                Date date = resultSet.getDate("Date");
+                String displayName = resultSet.getString("DisplayName");
 
-                comments.add(new Comment(commentID, userID, postID, message));
+                comments.add(new Comment(commentID, userID, postID, message, date, displayName));
             }
         } catch (SQLException e)
         {
@@ -117,8 +119,10 @@ public class CommentTable extends SQLDatabase implements CommentData
                 UUID userID = UUID.fromString(resultSet.getString("UserID"));
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
+                Date date = resultSet.getDate("Date");
+                String displayName = resultSet.getString("DisplayName");
 
-                comment = new Comment(commentID, userID, postID, message);
+                comment = new Comment(commentID, userID, postID, message, date, displayName);
             }
         } catch (SQLException e)
         {
@@ -144,9 +148,10 @@ public class CommentTable extends SQLDatabase implements CommentData
                 UUID userID = UUID.fromString(resultSet.getString("UserID"));
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
+                Date date = resultSet.getDate("Date");
+                String displayName = resultSet.getString("DisplayName");
 
-                comments.add(new Comment(commentID, userID, postID, message));
-
+                comments.add(new Comment(commentID, userID, postID, message, date, displayName));
             }
         } catch (SQLException e)
         {

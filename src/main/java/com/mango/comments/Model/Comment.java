@@ -37,6 +37,15 @@ public class Comment {
         displayName = generateDisplayName();
     }
 
+    public Comment(UUID commentID, UUID userID, UUID postID, String message, Date date, String displayName) {
+        this.date = date;
+        this.commentID = commentID;
+        this.userID = userID;
+        this.postID = postID;
+        this.message = message;
+        this.displayName = displayName;
+    }
+
     //Returns the current date as a string
     public String getCurrentDate(){
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
