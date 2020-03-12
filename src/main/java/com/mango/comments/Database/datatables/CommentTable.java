@@ -65,7 +65,7 @@ public class CommentTable extends SQLDatabase implements CommentData
             pState.setDate(3, new java.sql.Date(c.getDate().getTime()));
             pState.setString(4, c.getPostID().toString());
             pState.setString(5, c.getUserID().toString());
-            pState.setString(5, c.getMessage());
+            pState.setString(6, c.getMessage());
 
             pState.execute();
             return true;
@@ -191,7 +191,7 @@ public class CommentTable extends SQLDatabase implements CommentData
     public static void main(String args[])
     {
         CommentTable commentTable = new CommentTable();
-        System.out.println(commentTable.addComment(new Comment( UUID.randomUUID(), UUID.randomUUID(), "Ello")));
+        System.out.println(commentTable.addComment(new Comment( UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(), "Ello")));
 
 
     }
