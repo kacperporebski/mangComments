@@ -20,6 +20,10 @@ public class Comment {
     private UUID postID;
 
     //Constructor
+    public Comment() {
+
+    }
+
     public Comment(UUID userID, UUID postID, String message) {
         messageFontSize = MESSAGE_FONT_SIZE;
         displayNameFontSize = DISPLAY_NAME_FONT_SIZE;

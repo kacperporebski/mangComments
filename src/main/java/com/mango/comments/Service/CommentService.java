@@ -14,7 +14,7 @@ import java.util.UUID;
 @Service
 public class CommentService {
 //TODO change from fake to actual MySQL implementation
-    @Qualifier("Fake")
+    @Qualifier("Real")
     private final CommentData commentDatabase;
 
     @Autowired
