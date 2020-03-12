@@ -118,7 +118,7 @@ public class CommentTable extends SQLDatabase implements CommentData
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
 
-                new Comment(commentID, userID, postID, message);
+                comment = new Comment(commentID, userID, postID, message);
             }
         } catch (SQLException e)
         {
@@ -191,8 +191,8 @@ public class CommentTable extends SQLDatabase implements CommentData
     public static void main(String args[])
     {
         CommentTable commentTable = new CommentTable();
-        System.out.println(commentTable.addComment(new Comment( UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(), "Ello")));
-
-
+        UUID id = UUID.randomUUID();
+        System.out.println(commentTable.addComment(new Comment(id, UUID.randomUUID(), UUID.randomUUID(), "Ello")));
+        System.out.println(commentTable.selectCommentByID(id).get().getMessage());
     }
 }
