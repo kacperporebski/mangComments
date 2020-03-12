@@ -77,9 +77,9 @@ public class CommentTable extends SQLDatabase implements CommentData
     }
 
     @Override
-    public ArrayList<Comment> selectAllComments()
+    public CommentList selectAllComments()
     {
-        ArrayList<Comment> comments = new ArrayList<>();
+        CommentList comments = new CommentList();
         try
         {
             String query = "SELECT * FROM Comments";

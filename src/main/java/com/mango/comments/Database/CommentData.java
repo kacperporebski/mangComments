@@ -12,7 +12,7 @@ import java.util.UUID;
 public interface CommentData {
 
     boolean addComment(Comment c);
-    ArrayList<Comment> selectAllComments();
+    CommentList selectAllComments();
     Optional<Comment> selectCommentByID(UUID id);
     CommentList selectCommentsByUserID(UUID uid);
     boolean deleteComment(UUID id);

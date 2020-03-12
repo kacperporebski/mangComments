@@ -14,11 +14,7 @@ public class RealCommentDatabase implements CommentData {
 
     private CommentTable DB = new CommentTable();
 
-    public RealCommentDatabase(){
-        DB.addComment( new Comment(UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(),"test comment"));
-        DB.addComment( new Comment(UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(),"I love microservices"));
-        DB.addComment(new Comment(UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(),"How do i do this"));
-    }
+    public RealCommentDatabase(){}
 
     @Override
     public boolean addComment(Comment c) {
@@ -26,7 +22,7 @@ public class RealCommentDatabase implements CommentData {
     }
 
     @Override
-    public ArrayList<Comment> selectAllComments() {
+    public CommentList selectAllComments() {
         return DB.selectAllComments();
     }
 

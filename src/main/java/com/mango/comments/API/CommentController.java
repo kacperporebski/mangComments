@@ -7,7 +7,6 @@ import com.mango.comments.Service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 @RequestMapping("/comments")
@@ -26,7 +25,7 @@ public class CommentController {
     }
 
     @GetMapping
-    public ArrayList<Comment> getAllComments(){
+    public CommentList getAllComments(){
         return commentService.getAllComments();
     }
 

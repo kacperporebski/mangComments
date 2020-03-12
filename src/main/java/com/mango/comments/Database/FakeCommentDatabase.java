@@ -26,8 +26,14 @@ public class FakeCommentDatabase implements CommentData {
     }
 
     @Override
-    public ArrayList<Comment> selectAllComments() {
-        return DB;
+    public CommentList selectAllComments() {
+        CommentList myCom = new CommentList();
+        for (Comment c: DB
+             ) {
+            myCom.add(c);
+
+        }
+    return myCom;
     }
 
     @Override

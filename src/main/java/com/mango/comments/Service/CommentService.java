@@ -13,8 +13,6 @@ import java.util.UUID;
 
 @Service
 public class CommentService {
-//TODO change from fake to actual MySQL implementation
-    @Qualifier("Real")
     private final CommentData commentDatabase;
 
     @Autowired
@@ -26,7 +24,7 @@ public class CommentService {
         return commentDatabase.addComment(c);
     }
 
-    public ArrayList<Comment> getAllComments(){
+    public CommentList getAllComments(){
         return commentDatabase.selectAllComments();
     }
 
