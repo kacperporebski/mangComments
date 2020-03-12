@@ -5,7 +5,6 @@ import com.mango.comments.Model.CommentList;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -21,9 +20,9 @@ public class FakeCommentDatabase implements CommentData {
     }
 
     @Override
-    public int insertComment(UUID id, Comment c) {
-        DB.add(new Comment(id,c.getPostID(),c.getUserID(), c.getComment()));
-        return 1;
+    public boolean addComment(Comment c) {
+        DB.add(new Comment(c.getCommentID(),c.getPostID(),c.getUserID(), c.getMessage()));
+        return true;
     }
 
     @Override
@@ -33,7 +32,7 @@ public class FakeCommentDatabase implements CommentData {
 
     @Override
     public Optional<Comment> selectCommentByID(UUID id) {
-      return  DB.stream().filter(Comment->Comment.getId().equals(id))
+        return  DB.stream().filter(Comment->Comment.getCommentID().equals(id))
                 .findFirst();
     }
 
@@ -50,26 +49,26 @@ public class FakeCommentDatabase implements CommentData {
 
 
     @Override
-    public int deleteComment(UUID id) {
+    public boolean deleteComment(UUID id) {
         Optional<Comment> commentMaybe = selectCommentByID(id);
         if(commentMaybe.isPresent()){
-            return 0;
+            return true;
         }
         DB.remove(commentMaybe.get());
-        return 1;
+        return false;
     }
 
     @Override
-    public int updateComment(UUID id, Comment newCom) {
+    public boolean updateComment(UUID id, Comment newCom) {
         return selectCommentByID(id).map(com -> {
-            int indexOfUpdate = DB.indexOf(com);
-            if(indexOfUpdate>=0) {
-                DB.set(indexOfUpdate, new Comment(id, newCom.getUserID(), newCom.getPostID(), newCom.getComment()));
-                return 1;
-            }
-            return 0;
-        }
-        ).orElse(0);
+                    int indexOfUpdate = DB.indexOf(com);
+                    if(indexOfUpdate>=0) {
+                        DB.set(indexOfUpdate, new Comment(id, newCom.getUserID(), newCom.getPostID(), newCom.getMessage()));
+                        return true;
+                    }
+                    return false;
+                }
+        ).orElse(false);
     }
 
 }

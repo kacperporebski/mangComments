@@ -18,12 +18,12 @@ public class CommentService {
     private final CommentData commentDatabase;
 
     @Autowired
-    public CommentService(CommentData comDat){
+    public CommentService(@Qualifier("Real") CommentData comDat){
           this.commentDatabase=comDat;
         }
 
-    public int addComment(Comment c){
-        return commentDatabase.insertComment(c);
+    public boolean addComment(Comment c){
+        return commentDatabase.addComment(c);
     }
 
     public ArrayList<Comment> getAllComments(){
@@ -38,11 +38,11 @@ public class CommentService {
         return commentDatabase.selectCommentsByUserID(id);
     }
 
-    public int deleteComment(UUID id){
+    public boolean deleteComment(UUID id){
         return commentDatabase.deleteComment(id);
     }
 
-    public int updateComment(UUID id, Comment newCom){
+    public boolean updateComment(UUID id, Comment newCom){
         return commentDatabase.updateComment(id, newCom);
     }
 

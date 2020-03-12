@@ -11,19 +11,12 @@ import java.util.UUID;
 
 public interface CommentData {
 
-    int insertComment(UUID id, Comment c);
-
-    default int insertComment(Comment c){
-        UUID id = UUID.randomUUID();
-        return insertComment(id, c);
-
-    }
-
+    boolean addComment(Comment c);
     ArrayList<Comment> selectAllComments();
     Optional<Comment> selectCommentByID(UUID id);
     CommentList selectCommentsByUserID(UUID uid);
-    int deleteComment(UUID id);
-    int updateComment(UUID id, Comment newCom);
+    boolean deleteComment(UUID id);
+    boolean updateComment(UUID id, Comment newCom);
 
 
 }
