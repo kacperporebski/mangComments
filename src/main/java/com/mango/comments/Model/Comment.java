@@ -1,6 +1,7 @@
 package com.mango.comments.Model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,6 +15,8 @@ public class Comment {
     private UUID userID;
     private UUID postID;
 
+    ArrayList<Comment> replyComments;
+
     //Constructor
     public Comment() {
 
@@ -26,6 +29,7 @@ public class Comment {
         this.postID = postID;
         this.message = message;
         displayName = generateDisplayName();
+        ArrayList<Comment> replyComments = new ArrayList<>();
     }
 
     public Comment(UUID commentID, UUID userID, UUID postID, String message) {
@@ -35,6 +39,7 @@ public class Comment {
         this.postID = postID;
         this.message = message;
         displayName = generateDisplayName();
+        ArrayList<Comment> replyComments = new ArrayList<>();
     }
 
     public Comment(UUID commentID, UUID userID, UUID postID, String message, Date date, String displayName) {
@@ -44,6 +49,7 @@ public class Comment {
         this.postID = postID;
         this.message = message;
         this.displayName = displayName;
+        ArrayList<Comment> replyComments = new ArrayList<>();
     }
 
     //Returns the current date as a string
@@ -87,5 +93,22 @@ public class Comment {
 
     public Date getDate() {
         return date;
+    }
+
+    public void setReplyComments(ArrayList<Comment> replyComments) {
+        this.replyComments = replyComments;
+    }
+
+    public ArrayList<Comment> getReplyComments() {
+        return replyComments;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                ", commentID=" + commentID +
+                ", postID=" + postID +
+                ", comment='" + message + '\'' +
+                '}';
     }
 }
