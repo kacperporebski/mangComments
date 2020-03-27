@@ -1,3 +1,4 @@
+/*
 package com.mango.comments.Database;
 
 import com.mango.comments.Model.Comment;
@@ -78,3 +79,4 @@ public class FakeCommentDatabase implements CommentData {
     }
 
 }
+*/

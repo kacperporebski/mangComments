@@ -6,6 +6,7 @@ import com.mango.comments.EventSourcing.BasicClasses.CreateCommentCommand;
 import com.mango.comments.Model.Comment;
 import com.mango.comments.Service.CommentService;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class SubscriberEventStore implements Observer
@@ -22,6 +23,6 @@ public class SubscriberEventStore implements Observer
     {
         System.out.println("WE ARE IN OBSERVER");
         System.out.println(event.message);
-        commentDatabase.addComment(new Comment(event.postID, event.commentID, event.parentCommentID, event.message));
+        commentDatabase.addComment(new Comment(event.commentID, Optional.ofNullable(event.parentCommentID), event.postID, event.message));
     }
 }

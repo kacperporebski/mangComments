@@ -3,6 +3,7 @@ package com.mango.comments.Model;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 import java.util.UUID;
 
 public class Comment {
@@ -12,8 +13,9 @@ public class Comment {
     private UUID commentID;
     private String message;
     private String displayName;
-    private UUID userID;
+    //private UUID userID;
     private UUID postID;
+    private Optional<UUID> parentID;
 
     ArrayList<Comment> replyComments;
 
@@ -22,30 +24,31 @@ public class Comment {
 
     }
 
-    public Comment(UUID userID, UUID postID, String message) {
+    public Comment(Optional<UUID> parentID, UUID postID, String message) {
         date = new Date();
-        UUID commentID = UUID.randomUUID();
-        this.userID = userID;
+        this.commentID = UUID.randomUUID();
+        this.parentID = parentID;
         this.postID = postID;
         this.message = message;
         displayName = generateDisplayName();
         ArrayList<Comment> replyComments = new ArrayList<>();
     }
 
-    public Comment(UUID commentID, UUID userID, UUID postID, String message) {
+
+    public Comment(UUID commentID, Optional<UUID> parentID, UUID postID, String message) {
         date = new Date();
         this.commentID = commentID;
-        this.userID = userID;
+        this.parentID = parentID;
         this.postID = postID;
         this.message = message;
         displayName = generateDisplayName();
         ArrayList<Comment> replyComments = new ArrayList<>();
     }
 
-    public Comment(UUID commentID, UUID userID, UUID postID, String message, Date date, String displayName) {
+    public Comment(UUID commentID, Optional<UUID> parentID, UUID postID, String message, Date date, String displayName) {
         this.date = date;
         this.commentID = commentID;
-        this.userID = userID;
+        this.parentID = parentID;
         this.postID = postID;
         this.message = message;
         this.displayName = displayName;
@@ -83,8 +86,20 @@ public class Comment {
     public String getDisplayName()  { return displayName; }
     public void setDisplayName(String displayName)  { this.displayName= displayName; }
 
-    public UUID getUserID() {
-        return userID;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setPostID(UUID postID) {
+        this.postID = postID;
+    }
+
+    public Optional<UUID> getParentID() {
+        return parentID;
+    }
+
+    public void setParentID(Optional<UUID> parentID) {
+        this.parentID = parentID;
     }
 
     public UUID getPostID() {
