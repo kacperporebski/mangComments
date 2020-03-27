@@ -23,6 +23,15 @@ public class SubscriberEventStore implements Observer
     {
         System.out.println("WE ARE IN OBSERVER");
         System.out.println(event.message);
-        commentDatabase.addComment(new Comment(event.commentID, Optional.ofNullable(event.parentCommentID), event.postID, event.message));
+        Comment comment = new Comment(event.commentID, Optional.ofNullable(event.parentCommentID), event.postID, event.message);
+        if(comment.getParentID().isPresent())
+        {
+            System.out.println("THIS IS WRONG");
+        }
+        if(comment.getParentID().get() == null)
+        {
+            System.out.println("WHOOOOO IT WORKED");
+        }
+        commentDatabase.addComment(comment);
     }
 }

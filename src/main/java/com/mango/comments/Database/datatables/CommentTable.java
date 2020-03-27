@@ -275,5 +275,6 @@ public class CommentTable extends SQLDatabase implements CommentData
         System.out.println(commentTable.selectCommentByParentID(id1));
         System.out.println(commentTable.selectCommentsByPostID(postID));
 
+
     }
 }
