@@ -41,7 +41,7 @@ public class CommentController {
         return commentService.selectCommentByParentID(parent);
     }
 
-    @GetMapping(path= "parentID/{id}")
+    @GetMapping(path= "postID/{id}")
     public CommentList selectCommentsByPostID(@PathVariable("id") UUID post){
         return commentService.selectCommentsByPostID(post);
     }
