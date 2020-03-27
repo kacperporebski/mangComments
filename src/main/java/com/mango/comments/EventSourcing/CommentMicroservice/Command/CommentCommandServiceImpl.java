@@ -30,8 +30,12 @@ public class CommentCommandServiceImpl implements CommentCommandService, Subject
     @Override
     public CompletableFuture<String> createComment(Comment comment) {
         System.out.println("Inside createComment(Comment comment)");
-        CreateCommentCommand createCommentCommand = (new CreateCommentCommand(comment.getPostID(),
-                comment.getCommentID(), comment.getParentID().get(), comment.getMessage()));
+        CreateCommentCommand createCommentCommand;
+        if(comment.getParentID().isPresent())
+             createCommentCommand = new CreateCommentCommand(comment.getPostID(), comment.getCommentID(), comment.getParentID().get(), comment.getMessage());
+        else
+            createCommentCommand = new CreateCommentCommand(comment.getPostID(), comment.getCommentID(), null, comment.getMessage());
+
         notifyObserver(createCommentCommand);
         return commandGateway.send(createCommentCommand);
     }
