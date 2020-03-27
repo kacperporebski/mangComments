@@ -37,12 +37,14 @@ public class CommentController {
     }
 
     @GetMapping(path= "parentID/{id}")
-    public CommentList selectCommentByParentID(@PathVariable("id") UUID parent){
+    public CommentList selectCommentByParentID(@PathVariable("id") UUID parent)
+    {
         return commentService.selectCommentByParentID(parent);
     }
 
     @GetMapping(path= "postID/{id}")
-    public CommentList selectCommentsByPostID(@PathVariable("id") UUID post){
+    public CommentList selectCommentsByPostID(@PathVariable("id") UUID post)
+    {
         return commentService.selectCommentsByPostID(post);
     }
 
@@ -57,7 +59,8 @@ public class CommentController {
     }
 
     @PutMapping(path = "{id}")
-    public void updateComment(@PathVariable("id") UUID id, @RequestBody Comment commentToUpdate){
+    public void updateComment(@PathVariable("id") UUID id, @RequestBody Comment commentToUpdate)
+    {
             commentService.updateComment(id,commentToUpdate);
     }
 
