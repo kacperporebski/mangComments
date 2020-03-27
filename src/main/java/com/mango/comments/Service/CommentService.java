@@ -45,6 +45,8 @@ public class CommentService {
     }
 
     public CommentList selectCommentByParentID(UUID parent){ return commentDatabase.selectCommentByParentID(parent);}
+    public CommentList selectCommentsByPostID(UUID post){ return commentDatabase.selectCommentsByPostID(post);}
+
 
 
 

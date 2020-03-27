@@ -32,10 +32,10 @@ public class RealCommentDatabase implements CommentData {
       return  DB.selectCommentByID(id);
     }
 
-    @Override
+/*    @Override
     public CommentList selectCommentsByUserID(UUID uid) {
        return DB.selectCommentsByUserID(uid);
-    }
+    }*/
 
 
     @Override
@@ -49,8 +49,8 @@ public class RealCommentDatabase implements CommentData {
     }
 
     @Override
-    public CommentList selectCommentsByParentID(UUID parentID) {
-        return DB.selectCommentsByParentID(parentID);
+    public CommentList selectCommentByParentID(UUID parentID) {
+        return DB.selectCommentByParentID(parentID);
     }
 
     @Override

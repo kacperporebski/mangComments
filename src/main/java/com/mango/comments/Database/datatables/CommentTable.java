@@ -137,8 +137,37 @@ public class CommentTable extends SQLDatabase implements CommentData
         return Optional.ofNullable(comment);
     }
 
+/*    @Override
+    public CommentList selectCommentsByUserID(UUID uid)
+    {
+        CommentList comments = new CommentList();
+        try
+        {
+            String query = "SELECT * FROM Comments WHERE UserID = ?";
+            PreparedStatement pState = connection.prepareStatement(query);
+            pState.setString(1, uid.toString());
+
+            resultSet = pState.executeQuery();
+            while (resultSet.next())
+            {
+                UUID commentID = UUID.fromString(resultSet.getString("IDNum"));
+                UUID userID = UUID.fromString(resultSet.getString("UserID"));
+                UUID postID = UUID.fromString(resultSet.getString("PostID"));
+                String message = resultSet.getString("CommentContent");
+                Date date = resultSet.getDate("Date");
+                String displayName = resultSet.getString("DisplayName");
+
+                comments.add(new Comment(commentID, userID, postID, message, date, displayName));
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return (comments);
+    }*/
+
     @Override
-    public CommentList selectCommentsByParentID(UUID parentID)
+    public CommentList selectCommentByParentID(UUID parentID)
     {
         CommentList comments = new CommentList();
         try
@@ -230,35 +259,6 @@ public class CommentTable extends SQLDatabase implements CommentData
             return false;
         }    }
 
-
-    public CommentList selectCommentByParentID(UUID parent){
-        CommentList comments = new CommentList();
-        try
-        {
-            String query = "SELECT * FROM Comments WHERE UserID = ?";
-            PreparedStatement pState = connection.prepareStatement(query);
-            pState.setString(1, parent.toString());
-
-            resultSet = pState.executeQuery();
-            while (resultSet.next())
-            {
-                UUID commentID = UUID.fromString(resultSet.getString("IDNum"));
-                UUID userID = UUID.fromString(resultSet.getString("UserID"));
-                UUID postID = UUID.fromString(resultSet.getString("PostID"));
-                String message = resultSet.getString("CommentContent");
-                Date date = resultSet.getDate("Date");
-                String displayName = resultSet.getString("DisplayName");
-
-                comments.add(new Comment(commentID, userID, postID, message, date, displayName));
-            }
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        return (comments);
-
-    }
-
     public static void main(String args[])
     {
         CommentTable commentTable = new CommentTable();
@@ -272,7 +272,7 @@ public class CommentTable extends SQLDatabase implements CommentData
         Comment comment2 = new Comment(id2, Optional.ofNullable(id1), postID, "THIS IS A CHILD COMMENT");
         System.out.println(commentTable.addComment(comment2));
         System.out.println(commentTable.selectCommentByID(id2).get().getMessage());
-        System.out.println(commentTable.selectCommentsByParentID(id1));
+        System.out.println(commentTable.selectCommentByParentID(id1));
         System.out.println(commentTable.selectCommentsByPostID(postID));
 
     }
