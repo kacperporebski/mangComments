@@ -48,4 +48,8 @@ public class RealCommentDatabase implements CommentData {
        return DB.updateComment(id, newCom);
     }
 
+    public CommentList selectCommentByParentID(UUID parent){
+        return DB.selectCommentByParentID(parent);
+    }
+
 }

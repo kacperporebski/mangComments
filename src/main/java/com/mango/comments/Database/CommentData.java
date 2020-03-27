@@ -17,6 +17,7 @@ public interface CommentData {
     CommentList selectCommentsByUserID(UUID uid);
     boolean deleteComment(UUID id);
     boolean updateComment(UUID id, Comment newCom);
+    CommentList selectCommentByParentID(UUID parent);
 
 
 }

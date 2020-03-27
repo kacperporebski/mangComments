@@ -44,6 +44,8 @@ public class CommentService {
         return commentDatabase.updateComment(id, newCom);
     }
 
+    public CommentList selectCommentByParentID(UUID parent){ return commentDatabase.selectCommentByParentID(parent);}
+
 
 
 }
