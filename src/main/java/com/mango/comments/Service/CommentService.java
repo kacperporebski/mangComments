@@ -32,9 +32,9 @@ public class CommentService {
         return commentDatabase.selectCommentByID(id);
     }
 
-    public CommentList selectCommentsByUserID(UUID id){
+/*    public CommentList selectCommentsByUserID(UUID id){
         return commentDatabase.selectCommentsByUserID(id);
-    }
+    }*/
 
     public boolean deleteComment(UUID id){
         return commentDatabase.deleteComment(id);
@@ -45,6 +45,8 @@ public class CommentService {
     }
 
     public CommentList selectCommentByParentID(UUID parent){ return commentDatabase.selectCommentByParentID(parent);}
+    public CommentList selectCommentsByPostID(UUID post){ return commentDatabase.selectCommentsByPostID(post);}
+
 
 
 

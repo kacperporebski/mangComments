@@ -18,7 +18,7 @@ public class RealCommentDatabase implements CommentData {
 
     @Override
     public boolean addComment(Comment c) {
-        return DB.addComment(new Comment(c.getCommentID(),c.getPostID(),c.getUserID(), c.getMessage()));
+        return DB.addComment(new Comment(c.getCommentID(), c.getParentID(), c.getPostID(), c.getMessage()));
     }
 
     @Override
@@ -32,10 +32,10 @@ public class RealCommentDatabase implements CommentData {
       return  DB.selectCommentByID(id);
     }
 
-    @Override
+/*    @Override
     public CommentList selectCommentsByUserID(UUID uid) {
        return DB.selectCommentsByUserID(uid);
-    }
+    }*/
 
 
     @Override
@@ -48,8 +48,14 @@ public class RealCommentDatabase implements CommentData {
        return DB.updateComment(id, newCom);
     }
 
-    public CommentList selectCommentByParentID(UUID parent){
-        return DB.selectCommentByParentID(parent);
+    @Override
+    public CommentList selectCommentByParentID(UUID parentID) {
+        return DB.selectCommentByParentID(parentID);
+    }
+
+    @Override
+    public CommentList selectCommentsByPostID(UUID postID) {
+        return DB.selectCommentsByPostID(postID);
     }
 
 }

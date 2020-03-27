@@ -1,3 +1,4 @@
+/*
 package com.mango.comments.Database.datatables;
 
 import com.mango.comments.Database.SQLDatabase;
@@ -19,9 +20,11 @@ public class NestedCommentTable extends SQLDatabase
         createNestedCommentTable();
     }
 
-    /**
+    */
+/**
      * Creates a comment table in the database if it does not exist upon startup
-     */
+     *//*
+
     private void createNestedCommentTable()
     {
         try
@@ -47,9 +50,11 @@ public class NestedCommentTable extends SQLDatabase
         }
     }
 
-    /**
+    */
+/**
      * Returns an arraylist of all comments directly replying to the parent comment
-     */
+     *//*
+
     public ArrayList<Comment> selectReplyCommentsByParentID(UUID parentID)
     {
         ArrayList<Comment> comments = new ArrayList<>();
@@ -94,3 +99,4 @@ public class NestedCommentTable extends SQLDatabase
 
     }
 }
+*/
