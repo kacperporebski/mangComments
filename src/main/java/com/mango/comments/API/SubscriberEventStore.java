@@ -27,6 +27,7 @@ public class SubscriberEventStore implements Observer
         if(comment.getParentID().isPresent())
         {
             System.out.println("THIS IS WRONG");
+            System.out.println(comment.getParentID().get());
         }
         if(comment.getParentID().get() == null)
         {
