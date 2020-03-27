@@ -199,7 +199,7 @@ public class CommentTable extends SQLDatabase implements CommentData
         CommentList comments = new CommentList();
         try
         {
-            String query = "SELECT * FROM Comments WHERE UserID = ?";
+            String query = "SELECT * FROM Comments WHERE PostID = ?";
             PreparedStatement pState = connection.prepareStatement(query);
             pState.setString(1, parent.toString());
 
