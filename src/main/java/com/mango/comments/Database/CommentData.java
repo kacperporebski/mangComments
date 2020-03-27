@@ -14,11 +14,11 @@ public interface CommentData {
     boolean addComment(Comment c);
     CommentList selectAllComments();
     Optional<Comment> selectCommentByID(UUID id);
-    //CommentList selectCommentsByUserID(UUID uid);
+    CommentList selectCommentsByUserID(UUID uid);
     boolean deleteComment(UUID id);
     boolean updateComment(UUID id, Comment newCom);
-    public CommentList selectCommentsByParentID(UUID parentID);
-    public CommentList selectCommentsByPostID(UUID postId);
+    CommentList selectCommentByParentID(UUID parent);
+    CommentList selectCommentsByPostID(UUID postId);
 
 
 

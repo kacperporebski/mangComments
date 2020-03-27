@@ -78,5 +78,10 @@ public class FakeCommentDatabase implements CommentData {
         ).orElse(false);
     }
 
+
+    @Override
+    public CommentList selectCommentByParentID(UUID parent) {
+        return null;
+    }
 }
 */

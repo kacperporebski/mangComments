@@ -230,6 +230,35 @@ public class CommentTable extends SQLDatabase implements CommentData
             return false;
         }    }
 
+
+    public CommentList selectCommentByParentID(UUID parent){
+        CommentList comments = new CommentList();
+        try
+        {
+            String query = "SELECT * FROM Comments WHERE UserID = ?";
+            PreparedStatement pState = connection.prepareStatement(query);
+            pState.setString(1, parent.toString());
+
+            resultSet = pState.executeQuery();
+            while (resultSet.next())
+            {
+                UUID commentID = UUID.fromString(resultSet.getString("IDNum"));
+                UUID userID = UUID.fromString(resultSet.getString("UserID"));
+                UUID postID = UUID.fromString(resultSet.getString("PostID"));
+                String message = resultSet.getString("CommentContent");
+                Date date = resultSet.getDate("Date");
+                String displayName = resultSet.getString("DisplayName");
+
+                comments.add(new Comment(commentID, userID, postID, message, date, displayName));
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return (comments);
+
+    }
+
     public static void main(String args[])
     {
         CommentTable commentTable = new CommentTable();

@@ -36,10 +36,15 @@ public class CommentController {
         //return null if not found
     }
 
-/*    @GetMapping(path = {"user/{uid}"})
+    @GetMapping(path= "parentID/{id}")
+    public CommentList selectComentByParentID(@PathVariable("id") UUID parent){
+        return commentService.selectCommentByParentID(parent);
+    }
+
+    @GetMapping(path = {"user/{uid}"})
     public CommentList selectCommentsByUserID(@PathVariable("uid")UUID uid ){
         return commentService.selectCommentsByUserID(uid);
-    }*/
+    }
 
     @DeleteMapping(path = "{id}")
     public void deleteComment(@PathVariable("id") UUID id){
