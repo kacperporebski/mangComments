@@ -60,7 +60,7 @@ public class CommentTable extends SQLDatabase implements CommentData
             String query = "INSERT INTO Comments (IDNum, DisplayName, Date, PostID, UserID, CommentContent)" +
                     "VALUES (?, ?, ?, ?, ?, ?);";
             PreparedStatement pState = connection.prepareStatement(query);
-            pState.setString(1, c.getCommentID().toString());
+            pState.setString(1, UUID.randomUUID().toString()); //c.getCommentID().toString()
             pState.setString(2, c.getDisplayName());
             pState.setDate(3, new java.sql.Date(c.getDate().getTime()));
             pState.setString(4, c.getPostID().toString());

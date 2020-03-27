@@ -106,9 +106,9 @@ public class Comment {
     @Override
     public String toString() {
         return "Comment{" +
-                ", commentID=" + commentID +
+                " commentID=" + commentID +
                 ", postID=" + postID +
-                ", comment='" + message + '\'' +
+                ", message='" + message + '\'' +
                 '}';
     }
 }

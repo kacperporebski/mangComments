@@ -1,8 +1,9 @@
 package com.mango.comments.EventSourcing.Controller;
 
 
-import com.mango.comments.EventSourcing.BasicClasses.Comment;
+//import com.mango.comments.EventSourcing.BasicClasses.Comment;
 import com.mango.comments.EventSourcing.CommentMicroservice.Command.CommentCommandService;
+import com.mango.comments.Model.Comment;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +26,10 @@ public class CommentCommandController {
     }
 
     //Called when clicking 'Add comment'. Stores comment event into the data base.
-    @PostMapping("PostMapping stuff goes here")
-    public CompletableFuture<String> createComment(@RequestBody Comment comment) {
+    @PostMapping
+    public String createComment(@RequestBody Comment comment) {
         System.out.println("Inside createComment(@RequestBody Comment comment");
-        return commentCommandService.createComment(comment);
+       CompletableFuture<String> x = commentCommandService.createComment(comment);
+       return x.toString();
     }
 }

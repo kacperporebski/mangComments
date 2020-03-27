@@ -19,7 +19,7 @@ public class CommentController {
         commentService=comServ;
     }
 
-    @PostMapping
+//    @PostMapping
     public void addComment(@RequestBody Comment c){
         commentService.addComment(c);
     }

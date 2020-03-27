@@ -3,7 +3,8 @@ package com.mango.comments.EventSourcing.CommentMicroservice.Command;
 
 import com.mango.comments.API.Subject;
 import com.mango.comments.API.SubscriberEventStore;
-import com.mango.comments.EventSourcing.BasicClasses.Comment;
+//import com.mango.comments.EventSourcing.BasicClasses.Comment;
+import com.mango.comments.Model.Comment;
 import com.mango.comments.EventSourcing.BasicClasses.CreateCommentCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class CommentCommandServiceImpl implements CommentCommandService, Subject
     //This constructor is called immediately when the application is run
     public CommentCommandServiceImpl(CommandGateway commandGateway) {
         this.commandGateway = commandGateway;
+        observer= new SubscriberEventStore();
         System.out.println("Inside Constructor CommentCommandServiceImpl(CommandGateway commandGateway");
     }
 
@@ -29,7 +31,7 @@ public class CommentCommandServiceImpl implements CommentCommandService, Subject
     public CompletableFuture<String> createComment(Comment comment) {
         System.out.println("Inside createComment(Comment comment)");
         CreateCommentCommand createCommentCommand = (new CreateCommentCommand(comment.getPostID(),
-                comment.getCommentID(), comment.getParentCommentID(), comment.getMessage()));
+                comment.getCommentID(), comment.getPostID(), comment.getMessage()));
         notifyObserver(createCommentCommand);
         return commandGateway.send(createCommentCommand);
     }

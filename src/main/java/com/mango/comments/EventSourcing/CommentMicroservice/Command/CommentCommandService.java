@@ -1,7 +1,9 @@
 package com.mango.comments.EventSourcing.CommentMicroservice.Command;
 
 
-import com.mango.comments.EventSourcing.BasicClasses.Comment;
+
+
+import com.mango.comments.Model.Comment;
 
 import java.util.concurrent.CompletableFuture;
 
