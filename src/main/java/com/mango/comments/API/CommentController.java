@@ -41,11 +41,6 @@ public class CommentController {
         return commentService.selectCommentByParentID(parent);
     }
 
-    @GetMapping(path= "parentID/{id}")
-    public CommentList selectCommentsByPostID(@PathVariable("id") UUID post){
-        return commentService.selectCommentsByPostID(post);
-    }
-
 /*    @GetMapping(path = {"user/{uid}"})
     public CommentList selectCommentsByUserID(@PathVariable("uid")UUID uid ){
         return commentService.selectCommentsByUserID(uid);
