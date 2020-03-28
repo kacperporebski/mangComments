@@ -1,7 +1,7 @@
 package com.mango.comments.API;
 
 
-import com.mango.comments.EventSourcing.BasicClasses.CreateCommentCommand;
+import com.mango.comments.Model.CreateCommentCommand;
 
 public interface Observer
 {

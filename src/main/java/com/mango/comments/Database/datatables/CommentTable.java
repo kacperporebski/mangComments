@@ -212,7 +212,8 @@ public class CommentTable extends SQLDatabase implements CommentData
                 if(resultSet.getString("ParentID") != null)
                     parentID = Optional.of(UUID.fromString(resultSet.getString("ParentID")));
                 else
-                    parentID = Optional.ofNullable(null);                String message = resultSet.getString("CommentContent");
+                    parentID = Optional.ofNullable(null);
+                String message = resultSet.getString("CommentContent");
                 Date date = new Date(resultSet.getDate("Date").getTime());
                 String displayName = resultSet.getString("DisplayName");
 
@@ -273,7 +274,8 @@ public class CommentTable extends SQLDatabase implements CommentData
         System.out.println(commentTable.addComment(comment2));
         System.out.println(commentTable.selectCommentByID(id2).get().getMessage());
         System.out.println(commentTable.selectCommentByParentID(id1));
-        System.out.println(commentTable.selectCommentsByPostID(postID));
+
+        System.out.println("Printing commentList: " + commentTable.selectCommentsByPostID(postID).toString());
 
 
     }

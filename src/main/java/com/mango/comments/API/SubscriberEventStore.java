@@ -2,12 +2,11 @@ package com.mango.comments.API;
 
 
 import com.mango.comments.Database.RealCommentDatabase;
-import com.mango.comments.EventSourcing.BasicClasses.CreateCommentCommand;
+import com.mango.comments.Model.CreateCommentCommand;
 import com.mango.comments.Model.Comment;
 import com.mango.comments.Service.CommentService;
 
 import java.util.Optional;
-import java.util.UUID;
 
 public class SubscriberEventStore implements Observer
 {
