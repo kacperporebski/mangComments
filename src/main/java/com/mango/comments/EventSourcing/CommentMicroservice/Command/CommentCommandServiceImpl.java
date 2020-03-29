@@ -5,7 +5,7 @@ import com.mango.comments.API.Subject;
 import com.mango.comments.API.SubscriberEventStore;
 //import com.mango.comments.EventSourcing.BasicClasses.Comment;
 import com.mango.comments.Model.Comment;
-import com.mango.comments.EventSourcing.BasicClasses.CreateCommentCommand;
+import com.mango.comments.Model.CreateCommentCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 

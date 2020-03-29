@@ -1,4 +1,4 @@
-package com.mango.comments.EventSourcing.BasicClasses;
+package com.mango.comments.Model;
 
 import org.axonframework.commandhandling.TargetAggregateIdentifier;
 
