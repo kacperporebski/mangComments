@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
-public class Comment implements Comparable<Comment>{
+public class Comment implements Comparable<Comment> {
 
     private int likes;
     private Date date;
@@ -128,7 +128,7 @@ public class Comment implements Comparable<Comment>{
     }
 
     @Override
-    public int compareTo(Comment o) {
-        return this.date.compareTo(o.getDate());
+    public int compareTo(Comment comment) {
+        return this.date.compareTo(comment.getDate());
     }
 }
