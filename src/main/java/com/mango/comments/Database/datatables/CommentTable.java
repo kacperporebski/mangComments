@@ -187,7 +187,7 @@ public class CommentTable extends SQLDatabase implements CommentData
                 UUID commentID = UUID.fromString(resultSet.getString("IDNum"));
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
-                Date date = new Date(resultSet.getDate("Date").getTime());
+                Date date = new Date(resultSet.getTimestamp("Date").getTime());
                 String displayName = resultSet.getString("DisplayName");
 
                 comments.add(new Comment(commentID, Optional.ofNullable(parentID), postID, message, date, displayName));
@@ -218,7 +218,7 @@ public class CommentTable extends SQLDatabase implements CommentData
                     parentID = Optional.of(UUID.fromString(resultSet.getString("ParentID")));
                 else
                     parentID = Optional.ofNullable(null);                String message = resultSet.getString("CommentContent");
-                Date date = new Date(resultSet.getDate("Date").getTime());
+                Date date = new Date(resultSet.getTimestamp("Date").getTime());
                 String displayName = resultSet.getString("DisplayName");
 
                 comments.add(new Comment(commentID, parentID, postID, message, date, displayName));
