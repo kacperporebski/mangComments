@@ -91,7 +91,12 @@ public class CommentTable extends SQLDatabase implements CommentData
             while (resultSet.next())
             {
                 UUID commentID = UUID.fromString(resultSet.getString("IDNum"));
-                Optional<UUID> parentID = Optional.of(UUID.fromString(resultSet.getString("ParentID")));
+                Optional<UUID> parentID;
+                if(resultSet.getString("ParentID") == null)
+                        parentID = Optional.ofNullable(null);
+                else
+                    parentID = Optional.ofNullable(UUID.fromString(resultSet.getString("ParentID")));
+
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
                 Date date = new Date(resultSet.getTimestamp("Date").getTime());
