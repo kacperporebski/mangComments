@@ -130,7 +130,7 @@ public class CommentTable extends SQLDatabase implements CommentData
                     parentID = Optional.ofNullable(null);
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
-                Date date = new Date(resultSet.getDate("Date").getTime());
+                Date date = new Date(resultSet.getTimestamp("Date").getTime());
                 String displayName = resultSet.getString("DisplayName");
 
                 comment = new Comment(id, parentID, postID, message, date, displayName);
