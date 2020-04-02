@@ -13,7 +13,7 @@ public class CommentList {
 
     public void add(Comment c){
         comments.add(c);
-        Collections.sort(comments, Collections.reverseOrder());
+        Collections.sort(comments);
 
     }
 
