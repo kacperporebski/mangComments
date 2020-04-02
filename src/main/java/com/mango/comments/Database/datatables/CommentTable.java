@@ -122,7 +122,6 @@ public class CommentTable extends SQLDatabase implements CommentData
             resultSet = pState.executeQuery();
             if (resultSet.next())
             {
-                System.out.println("Inside select by id");
                 Optional<UUID> parentID;
                 if(resultSet.getString("ParentID") != null)
                     parentID = Optional.ofNullable(UUID.fromString(resultSet.getString("ParentID")));
@@ -131,7 +130,6 @@ public class CommentTable extends SQLDatabase implements CommentData
                 UUID postID = UUID.fromString(resultSet.getString("PostID"));
                 String message = resultSet.getString("CommentContent");
                 Date date = new Date(resultSet.getTimestamp("Date").getTime());
-                System.out.println("Printing date in selectCommentByID() " + date);
                 String displayName = resultSet.getString("DisplayName");
 
                 comment = new Comment(id, parentID, postID, message, date, displayName);
