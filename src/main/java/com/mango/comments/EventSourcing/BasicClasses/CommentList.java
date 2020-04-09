@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class CommentList {
 
-    public ArrayList<Comment> comments;
+    public ArrayList<CommentCreatedEvent> commentCreatedEvents;
 
     public CommentList(){
-        comments = new ArrayList<>();
+        commentCreatedEvents = new ArrayList<>();
     }
 
-    public void add(Comment c){
-        comments.add(c);
+    public void add(CommentCreatedEvent c){
+        commentCreatedEvents.add(c);
     }
 
     @Override
     public String toString() {
        String s = "";
-        for (Comment c : comments
+        for (CommentCreatedEvent c : commentCreatedEvents
              ) {
 
             s+= c + "\n";

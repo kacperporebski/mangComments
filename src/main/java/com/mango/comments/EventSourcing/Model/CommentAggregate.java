@@ -1,7 +1,7 @@
 package com.mango.comments.EventSourcing.Model;
 
 
-import com.mango.comments.EventSourcing.BasicClasses.Comment;
+import com.mango.comments.EventSourcing.BasicClasses.CommentCreatedEvent;
 import com.mango.comments.EventSourcing.BasicClasses.CreateCommentCommand;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
@@ -30,17 +30,17 @@ public class CommentAggregate {
     @CommandHandler
     public CommentAggregate(CreateCommentCommand createCommentCommand){
         System.out.println("Inside Constructor CommentAggregate(CreateCommentCommand createCommentCommand)");
-        AggregateLifecycle.apply(new Comment(createCommentCommand.postID, createCommentCommand.commentID, createCommentCommand.parentCommentID, createCommentCommand.message));
+        AggregateLifecycle.apply(new CommentCreatedEvent(createCommentCommand.postID, createCommentCommand.commentID, createCommentCommand.parentCommentID, createCommentCommand.message));
     }
 
     //Called upon the creation of a new comment
     @EventSourcingHandler
-    protected void on(Comment comment) {
+    protected void on(CommentCreatedEvent commentCreatedEvent) {
         System.out.println("Inside on(CommentCreatedEvent commentCreatedEvent)");
-        this.postID = comment.getPostID();
-        this.commentID = comment.getCommentID();
-        this.parentCommentID = comment.getParentCommentID();
-        this.message = comment.getMessage();
+        this.postID = commentCreatedEvent.getPostID();
+        this.commentID = commentCreatedEvent.getCommentID();
+        this.parentCommentID = commentCreatedEvent.getParentCommentID();
+        this.message = commentCreatedEvent.getMessage();
         this.status = "CREATED";
     }
 }

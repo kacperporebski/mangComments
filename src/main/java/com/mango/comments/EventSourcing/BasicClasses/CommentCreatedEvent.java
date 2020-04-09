@@ -3,17 +3,17 @@ package com.mango.comments.EventSourcing.BasicClasses;
 import java.util.UUID;
 
 //This class is used for storing the details of a comment. Used by controller and GUI
-public class Comment {
+public class CommentCreatedEvent {
     private UUID postID;
     private UUID commentID;
     private UUID parentCommentID;
     private String message;
 
     //Empty constructor
-    public Comment(){};
+    public CommentCreatedEvent(){};
 
     //Constructor
-    public Comment( UUID postID, UUID commentID, UUID parentCommentID, String message) {
+    public CommentCreatedEvent(UUID postID, UUID commentID, UUID parentCommentID, String message) {
         this.postID = postID;
         this.commentID = commentID;
         this.parentCommentID = parentCommentID;
